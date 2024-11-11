@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  rag_app:
+    build:
+      context: .
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    ports:
+      - "8000:8000"
