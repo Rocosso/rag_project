@@ -48,6 +48,7 @@ rag_project/
 
 ### System Architecture
 
+```mermaid
 flowchart TD
 subgraph API Layer
 A[FastAPI Endpoint]
@@ -63,15 +64,16 @@ subgraph Domain Layer
 E[RetrieverInterface]
 F[GeneratorInterface]
 end
-
 A --> B
 B --> E
 B --> F
 E --> C
 F --> D
+```
 
 ### Dependency Injection Setup
 
+```mermaid
 flowchart TD
 subgraph Dependency Container
 C1[Retriever Singleton]
@@ -81,9 +83,11 @@ end
 
 C1 --> C3
 C2 --> C3
+```
 
 ### Data Flow
 
+```mermaid
 sequenceDiagram
 
 participant Client
@@ -100,6 +104,7 @@ UseCase->>Generator: Generate response using retrieved documents
 Generator-->>UseCase: Returns generated response
 UseCase-->>API: Returns response
 API-->>Client: JSON { response }
+```
 
 ## Endpoints
 
@@ -141,7 +146,7 @@ Create a `.env` file in the root with the following content:
 
 3. **Build and Run with Docker**
    `docker compose up -d --build`.
-5. **Access the API**:
+4. **Access the API**:
 
 The API will be available at `http://localhost:8000/ask`.
 
@@ -150,6 +155,17 @@ The API will be available at `http://localhost:8000/ask`.
    Swagger: `http://localhost:8000/docs#/`
 
    Redoc: `http://localhost:8000/redoc`
+6. Instruccions about Swagger use:
+
+   * create a file .env from .env.example file
+   * add your api-key from OpenAI
+   * docker-compose up the service in your local
+   * in your browser enter to `http://localhost:8000/docs#/`
+   * push the Post endpoint that you will use
+   * push button "`Try It Out`"
+   * replace the question on the value of key "`question`"
+   * press `Execute` Blue button
+   * watchs the field Response body, in green text is the answuer of model
 
 ## Technologies Used
 
