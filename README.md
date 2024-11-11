@@ -44,6 +44,7 @@ rag_project/
 └── README.md
 ```
 
+
 ## High-Level Design
 
 ### System Architecture
@@ -163,7 +164,3 @@ The API will be available at `http://localhost:8000/ask`.
 ## License
 
 This project is licensed under the MIT License.
-
-<pre class="!overflow-visible"><div class="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950"></div></pre>
-
-<pre class="!overflow-visible"><div class="sticky top-9 md:top-[5.75rem]"><div class="absolute bottom-0 right-2 flex h-9 items-center"><div class="flex items-center rounded bg-token-sidebar-surface-primary px-2 font-sans text-xs text-token-text-secondary dark:bg-token-main-surface-secondary"><span class="" data-state="closed"></span></div></div></div></pre>
