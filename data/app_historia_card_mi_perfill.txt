@@ -1,0 +1,9 @@
+2. Mi Perfil
+En la sección de Mi Perfil, los usuarios pueden gestionar su identidad digital y ajustar sus preferencias para personalizar la experiencia dentro de la app. Aquí, las
+funciones incluyen:
+Actualizar datos personales: Con opciones para modificar la información de contacto y verificar identidad mediante herramientas de reconocimiento facial o
+huellas dactilares.
+Preferencias de seguridad: Activación de autenticación en dos pasos, cambios de contraseña frecuentes, y configuración de alertas personalizadas.
+Gestión de dispositivos conectados: Monitoreo de los dispositivos autorizados para acceder a la cuenta, con la posibilidad de desvincular cualquier
+dispositivo no reconocido.
+Historial de seguridad: Acceso a un registro completo de inicios de sesión y cambios de configuración.
