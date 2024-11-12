@@ -1,18 +1,22 @@
+import os
 from dependency_injector import containers, providers
 from src.infrastructure.generator import Generator
 from src.infrastructure.tfidf_retriever import TFIDFRetriever
 from src.application.ask_question_use_case import AskQuestionUseCase
 
 
-# Función para cargar documentos desde el archivo
-def load_documents(file_path: str):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        documents = [line.strip() for line in file if line.strip()]  # Carga cada línea como un documento
-        print("Loaded Documents:", documents)  # Verificar que el contenido sea correcto
+# Función para cargar todos los documentos desde archivos individuales
+def load_documents_from_directory(directory: str):
+    documents = []
+    for filename in os.listdir(directory):
+        if filename.endswith(".txt"):
+            with open(os.path.join(directory, filename), 'r', encoding='utf-8') as file:
+                content = file.read().strip()
+                documents.append({"title": filename, "content": content})
     return documents
 
-# Cargar los documentos desde el archivo
-documents = load_documents("data/documents.txt")
+# Cargar documentos desde la carpeta `data`
+documents = load_documents_from_directory("data")
 
 class Container(containers.DeclarativeContainer):
     config = providers.Configuration()

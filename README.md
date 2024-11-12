@@ -136,7 +136,7 @@ curl -X POST "http://localhost:8000/ask" -H "Content-Type: application/json" -d 
 
 1. **Clone the repository**:
 
-`git clone https://github.com/Rocosso/rag_project.git cd rag_project`.
+`git clone https://github.com/Rocosso/rag_project.git && cd rag_project`.
 </code></div></pre><pre class="!overflow-visible"><div class="contain-inline-size rounded-md border-[0.5px] border-token-border-medium relative bg-token-sidebar-surface-primary dark:bg-gray-950"></div></preplain>
 
 2. **Set up environment variables**:
