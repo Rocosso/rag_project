@@ -1,6 +1,3 @@
-from venv import logger
-
-from src.containers.containers import documents
 from src.domain.generator_interface import GeneratorInterface
 from src.domain.retriever_interface import RetrieverInterface
 from src.commons.load_documents import load_documents_from_directory
@@ -19,7 +16,7 @@ class AskQuestionDenseUseCase:
     def execute(self, query: str, documents: list) -> str:
 
         # Utiliza DenseRetriever para recuperar los documentos
-        retrieved_docs = self.retriever.retrieve(query=query, top_k=3, documents=documents, logger=self.logger)
+        retrieved_docs = self.retriever.retrieve(query=query, top_k=1, documents=documents, logger=self.logger)
 
         # Imprime los documentos recuperados
         self.logger.info("Retrieved Documents (Dense): %s", retrieved_docs)

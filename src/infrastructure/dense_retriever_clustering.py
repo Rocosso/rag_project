@@ -15,7 +15,7 @@ class DenseRetrieverClustering:
 
 
 
-    def retrieve(self, query: str, top_k: int = 3, documents: list = None, logger: setup_logger = None):
+    def retrieve(self, query: str, top_k: int = 1, documents: list = None, logger: setup_logger = None):
         # Crear embeddings para todos los documentos
         doc_contents = [doc["content"] for doc in documents]
         self.doc_embeddings = self.model.encode(doc_contents, convert_to_numpy=True)
@@ -33,11 +33,6 @@ class DenseRetrieverClustering:
         # Realiza la búsqueda en el índice FAISS
         distances, indices = self.index.search(query_embedding, top_k)
 
-        self.logger.info(f"\n\ndistances: {distances}")
-        self.logger.info(f"indices: {indices}")
-        self.logger.info(f"Total documents: {len(self.documents)}")
-        self.logger.info(f"indices[0]: {indices[0]}\n\n\n\n")
-
         # Devuelve los documentos correspondientes a los índices más cercanos
         results = [(self.documents[idx]["title"], self.documents[idx]["content"], distances[0][i]) for i, idx in
                    enumerate(indices[0])]
@@ -47,7 +42,7 @@ class DenseRetrieverClustering:
 
         return results
 
-    def validate_retrieval(self, query_embedding, top_k: int = 3):
+    def validate_retrieval(self, query_embedding, top_k: int = 1):
         similarities = cosine_similarity(query_embedding, self.doc_embeddings).flatten()
         top_indices = np.argsort(similarities)[-top_k:][::-1]
 
