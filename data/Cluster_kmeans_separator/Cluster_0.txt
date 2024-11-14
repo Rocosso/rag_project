@@ -1,0 +1,25 @@
+4. Pagos
+La sección de Pagos es una de las más utilizadas dentro de la app, facilitando la realización de pagos de manera rápida y segura. Las funcionalidades incluyen:
+Pago de tarjeta de crédito: Opción de realizar pagos mínimos, pagos totales o seleccionar un monto específico, con recordatorios automáticos para evitar
+cargos por retraso.
+Transferencias bancarias: Envío de dinero a cuentas bancarias en México y el extranjero, con soporte para múltiples divisas y opciones para guardar
+beneficiarios frecuentes.
+Pago de servicios: Desde servicios públicos como agua, luz, y gas, hasta suscripciones a plataformas digitales y telecomunicaciones, los usuarios pueden
+realizar todos sus pagos desde la app. La opción de programar pagos recurrentes asegura que nunca se pasen fechas de vencimiento, eliminando la
+preocupación por cortes de servicio.
+Pago entre usuarios de HistoriaCard: Los usuarios pueden enviar y recibir dinero entre cuentas de HistoriaCard de forma instantánea y sin costo alguno. Esta
+función es ideal para dividir gastos con amigos o familiares, como cenas, viajes, o cualquier otro gasto compartido.
+Recargas de tiempo aire: Recarga de teléfonos móviles directamente desde la app, compatible con todas las principales operadoras de México, con
+bonificaciones y descuentos exclusivos para usuarios de HistoriaCard.
+
+6. Recompensas
+El programa de Recompensas de HistoriaCard es una de las características más atractivas de la tarjeta de crédito. Diseñado para premiar a los usuarios por su uso
+responsable de la tarjeta, este programa ofrece una amplia gama de opciones para redimir puntos.
+Canjeo de puntos por efectivo: Los usuarios pueden convertir sus puntos en efectivo, que se abona directamente a su cuenta de débito o se aplica como un
+crédito en su estado de cuenta de la tarjeta de crédito.
+Descuentos en compras: Canjea puntos por descuentos en compras en comercios afiliados, desde supermercados y tiendas de ropa hasta restaurantes y
+servicios en línea.
+Vuelos y hoteles: HistoriaCard ha establecido alianzas con aerolíneas y cadenas hoteleras para ofrecer a sus usuarios la posibilidad de canjear puntos por
+boletos de avión, noches de hotel, y paquetes vacacionales.
+Experiencias únicas: Los usuarios también pueden utilizar sus puntos para acceder a experiencias exclusivas, como eventos culturales, conciertos, y cenas
+gourmet en restaurantes de alta categoría.

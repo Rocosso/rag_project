@@ -1,9 +1,14 @@
 import openai
+import logging
 from src.config import OPENAI_API_KEY
 from src.domain.generator_interface import GeneratorInterface
 
 class Generator(GeneratorInterface):
-    def __init__(self):
+    def __init__(self, logger=None):
+        if logger is None:
+            self.logger = logging.getLogger(__name__)
+        else:
+            self.logger = logger
         openai.api_key = OPENAI_API_KEY
 
     def generate(self, context: str) -> str:

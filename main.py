@@ -1,6 +1,8 @@
 from fastapi import FastAPI
-from src.api.ask_endpoint import router
-from src.containers import Container
+from src.api.ask_endpoint import router as ask_router
+from src.api.ask_dense_endpoint import router as ask_dense_router
+from src.containers.containers import Container
+from src.containers.containers_dense_1 import DenseContainer1
 
 
 # Configuración de la aplicación FastAPI
@@ -12,9 +14,11 @@ app = FastAPI(
     redoc_url="/redoc"      # URL de la documentación de ReDoc
 )
 
-# Inicializa la aplicación FastAPI y el contenedor
+# Inicializar los contenedores de dependencias
 container = Container()
+dense_container = DenseContainer1()
 app.container = container
 
-# Incluye el router del endpoint
-app.include_router(router)
+# Incluir los routers
+app.include_router(ask_router)
+app.include_router(ask_dense_router)
