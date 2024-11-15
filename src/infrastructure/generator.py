@@ -12,17 +12,24 @@ class Generator(GeneratorInterface):
         openai.api_key = OPENAI_API_KEY
 
 
-    def generate(self, context: str, question: str) -> str:
+    def generate(self, context: str, question: str, conversation_history: str) -> str:
         prompt = (
                 "Eres un asistente virtual experto. Utiliza la siguiente información de los documentos y la pregunta "
-                "proporcionada para dar una respuesta precisa y coherente, basándote únicamente en el contenido"
-                " proporcionado. No agregues información que no esté en el contexto. Evita crear nuevas preguntas en "
+                "proporcionada para dar una respuesta precisa y coherente, basándote únicamente en el contenido "
+                "proporcionado. No agregues información que no esté en el contexto. Evita crear nuevas preguntas en "
                 "tu respuesta y limita tu respuesta a la pregunta realizada.\n\n"
-                + context + "\n\nPregunta: " + question + "\n\nResponde en el idioma de la pregunta."
+                "Contexto:\n" + context + "\n\n"
+                "Historial de la conversación:\n" + conversation_history + "\n\n"
+                "Usuario: " + question + "\n\n"
+                "Responde en el idioma de la pregunta."
         )
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=150
-        )
-        return response['choices'][0]['message']['content'].strip()
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=150,
+                temperature=0.7
+            )
+            return response['choices'][0]['message']['content'].strip()
+        except Exception as e:
+            self.logger.error(F"Error calling LLM Api:  {e}")

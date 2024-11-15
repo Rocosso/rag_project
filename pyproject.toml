@@ -25,6 +25,7 @@ scikit-learn = "1.5.2"
 sentence-transformers = "3.3.0"
 uvicorn = "0.32.0"
 pydantic-settings = "^2.6.1"
+typing-extensions = "^4.12.2"
 
 
 [build-system]

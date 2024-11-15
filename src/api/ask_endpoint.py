@@ -1,11 +1,13 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 
 from src.data_models.query_models import QueryRequest
 from src.application.ask_question_use_case import AskQuestionUseCase
 from src.containers.containers import Container
+from src.infrastructure.conversation_memory import ConversationMemory
 
 
 router = APIRouter()
+conversation_memory = ConversationMemory()
 
 # Función de dependencia para obtener el caso de uso
 def get_ask_question_use_case() -> AskQuestionUseCase:
@@ -27,6 +29,22 @@ async def ask_question(request: QueryRequest, use_case: AskQuestionUseCase = Dep
          }
     '''
 
-    response = use_case.execute(request.question)
 
-    return {"response": response}
+    try:
+        session_id = request.session_id
+
+        # Obtener el historial de la conversación
+        history = conversation_memory.get_history(session_id)
+
+        # Agregar la pregunta actual al historial
+        conversation_memory.add_message(session_id, "user", request.question)
+
+        # Ejecutar el caso de uso con el historial
+        response = use_case.execute(request.question, history)
+
+        # Agregar la respuesta al historial
+        conversation_memory.add_message(session_id, "assistant", response)
+
+        return {"response": response}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
