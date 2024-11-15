@@ -16,8 +16,8 @@ COPY . .
 # Establece las variables de entorno
 ENV PYTHONPATH=/rag_project/src
 
-# Expone el puerto si es necesario para el proyecto (solo si tu aplicación tiene un servicio HTTP)
- EXPOSE 8000
+# Expone el puerto
+EXPOSE 8000
 
 # Comando de ejecución
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
