@@ -12,7 +12,7 @@ def get_ask_question_use_case() -> AskQuestionUseCase:
     return Container.ask_question_use_case()
 
 # Endpoint POST para recibir preguntas y responder
-@router.post("/ask")
+@router.post("/ask", tags=["first_page"] )
 async def ask_question(request: QueryRequest, use_case: AskQuestionUseCase = Depends(get_ask_question_use_case)):
     '''
     **Technology** documents indexed using **TF-IDF** and preproceded by handlers
@@ -26,5 +26,7 @@ async def ask_question(request: QueryRequest, use_case: AskQuestionUseCase = Dep
          "response": "¿Cuáles son las opciones de redención de puntos disponibles para los usuarios de HistoriaCard? Los usuarios de HistoriaCard pueden convertir sus puntos en efectivo, descuentos en compras, vuelos y hoteles, y experiencias únicas como eventos culturales, conciertos y cenas gourmet en restaurantes de alta categoría."
          }
     '''
+
     response = use_case.execute(request.question)
+
     return {"response": response}

@@ -11,11 +11,14 @@ class Generator(GeneratorInterface):
             self.logger = logger
         openai.api_key = OPENAI_API_KEY
 
-    def generate(self, context: str) -> str:
+
+    def generate(self, context: str, question: str) -> str:
         prompt = (
-            "Given the following information from documents, answer the question based on the content provided.\n\n"
-            + context + "\n\nAnswer the question based on the above content.  the answer should be in the language of "
-            + "the question."
+                "Eres un asistente virtual experto. Utiliza la siguiente información de los documentos y la pregunta "
+                "proporcionada para dar una respuesta precisa y coherente, basándote únicamente en el contenido"
+                " proporcionado. No agregues información que no esté en el contexto. Evita crear nuevas preguntas en "
+                "tu respuesta y limita tu respuesta a la pregunta realizada.\n\n"
+                + context + "\n\nPregunta: " + question + "\n\nResponde en el idioma de la pregunta."
         )
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
