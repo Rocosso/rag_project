@@ -5,5 +5,5 @@ from src.settings.logging_config import setup_logger
 
 class GeneratorInterface(ABC):
     @abstractmethod
-    def generate(self, context: str, logger: setup_logger) -> str:
+    def generate(self, context: str, question: str) -> str:
         pass

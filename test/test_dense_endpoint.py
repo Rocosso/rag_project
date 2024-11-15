@@ -42,8 +42,15 @@ async def test_ask_dense_clustering_invalid_method():
                 "question": "Pregunta de prueba"
             }
         )
-    assert response.status_code == status.HTTP_400_BAD_REQUEST
-    assert response.json() == {"detail": "Método de clustering no soportado."}
+    assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
+    response_json = response.json()
+    assert 'detail' in response_json
+    assert len(response_json['detail']) == 1
+    error_detail = response_json['detail'][0]
+    assert error_detail['loc'] == ['body', 'type_selector']
+    assert error_detail['msg'] == "Input should be 'lda' or 'kmeans'"
+    assert error_detail['type'] == 'enum'
+
 
 @pytest.mark.asyncio
 async def test_ask_dense_clustering_missing_field():

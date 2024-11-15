@@ -9,7 +9,7 @@ router = APIRouter()
 def get_ask_question_dense_use_case() -> AskQuestionDenseUseCase:
     return DenseContainer1.ask_question_dense_use_case()
 
-@router.post("/ask-dense-clustering", summary="Haz una pregunta con recuperación densa")
+@router.post("/ask-dense-clustering", summary="Haz una pregunta con recuperación densa", tags=["first_page"] )
 async def ask_question_dense(
     request: QueryRequestWithClustering,
     use_case: AskQuestionDenseUseCase = Depends(get_ask_question_dense_use_case)

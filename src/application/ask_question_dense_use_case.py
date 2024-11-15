@@ -1,3 +1,5 @@
+from venv import logger
+
 from src.domain.generator_interface import GeneratorInterface
 from src.domain.retriever_interface import RetrieverInterface
 from src.commons.load_documents import load_documents_from_directory
@@ -19,14 +21,14 @@ class AskQuestionDenseUseCase:
         retrieved_docs = self.retriever.retrieve(query=query, top_k=1, documents=documents, logger=self.logger)
 
         # Imprime los documentos recuperados
-        self.logger.info("Retrieved Documents (Dense): %s", retrieved_docs)
+        self.logger.info(f"Retrieved Documents (Dense):  {retrieved_docs}")
 
         # Combina el contenido de los documentos recuperados como contexto
         context = " ".join([doc[1] for doc in retrieved_docs])
-        self.logger.info("Context for Dense Generation:", context)
+        self.logger.info(f"Context for Dense Generation: {context}")
 
         # Genera la respuesta utilizando el contexto
-        response = self.generator.generate(context)
+        response = self.generator.generate(context=context, question=query)
         return response
 
     def execute_with_lda(self, question: str) -> str:

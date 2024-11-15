@@ -44,7 +44,6 @@ rag_project/
 └── README.md
 ```
 
-
 ## High-Level Design
 
 ### System Architecture
@@ -177,6 +176,34 @@ The API will be available at `http://localhost:8000/ask`.
 * **OpenAI API**: GPT-3.5 model for generating answers.
 * **Scikit-learn**: For implementing TF-IDF document retrieval.
 
-## License
+## Testing
+
+* create a Virtualenvironment using this command in a terminal
+*    `python -m venv venv`
+* activate this venv using:
+
+  * in Linux and Mac use:
+
+    `source venv/bin/activate`
+  * in Windows use:
+
+```
+```
+
+`venv\Scripts\activate`
+
+* install the libraries using:
+
+```
+pip install  -r requirements.txt
+```
+
+* execute the test using the command:
+
+`pytest`
+
+## 
+
+License
 
 This project is licensed under the MIT License.
