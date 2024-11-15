@@ -1,5 +1,6 @@
 import openai
 import logging
+
 from src.config import OPENAI_API_KEY
 from src.domain.generator_interface import GeneratorInterface
 

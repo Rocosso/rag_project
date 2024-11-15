@@ -17,7 +17,6 @@ async def test_ask_endpoint_success():
         )
     assert response.status_code == 200
     response_json = response.json()
-    print("Response JSON:", response_json)
     assert isinstance(response_json, dict)
     assert "message" in response_json
     assert response_json["response"] == ("Las opciones de redención de puntos disponibles son las siguientes:\n"

@@ -8,7 +8,9 @@ from src.data_models.query_models import QueryRequest
 router = APIRouter()
 
 
-@router.post("/ask_llama", summary="Haz una pregunta a un modelo LLAMA3.1-1B en esta maquina local", tags=["first_page"])
+@router.post("/ask_llama",
+             summary="Haz una pregunta a un modelo LLAMA3.1-1B en esta maquina local",
+             tags=["Local_model_LLAMA3.1-1B"] )
 def ask_question(
     request: QueryRequest,
     use_case: AskQuestionLlamaUseCase = Depends(lambda: AskQuestionLlamaUseCase(

@@ -38,10 +38,15 @@ rag_project/
 │   ├── infrastructure/         # Implementations of interfaces
 │   │   ├── generator.py
 │   │   └── retriever.py
-│   └── main.py                 # FastAPI app initialization
+│   
 ├── Dockerfile
 ├── requirements.txt
 └── README.md
+└── docker-compose.yml
+└── LICENSE
+└── poetry.lock
+└── pyproyect.toml
+└── main.py                     # FastAPI init file
 ```
 
 ## High-Level Design
@@ -179,7 +184,7 @@ The API will be available at `http://localhost:8000/ask`.
 ## Testing
 
 * create a Virtualenvironment using this command in a terminal
-*    `python -m venv venv`
+* `python -m venv venv`
 * activate this venv using:
 
   * in Linux and Mac use:
@@ -188,6 +193,7 @@ The API will be available at `http://localhost:8000/ask`.
   * in Windows use:
 
 ```
+
 ```
 
 `venv\Scripts\activate`
@@ -202,8 +208,34 @@ pip install  -r requirements.txt
 
 `pytest`
 
-## 
+## Troubles
 
-License
+### 1.
+
+Using version ^0.6.3.post1 for vllm
+
+Updating dependencies
+Resolving dependencies... (0.0s)
+
+Because no versions of vllm match >0.6.3.post1,<0.7.0
+and vllm (0.6.3.post1) depends on numpy (<2.0.0), vllm (>=0.6.3.post1,<0.7.0) requires numpy (<2.0.0).
+So, because venv depends on both numpy (2.1.3) and vllm (^0.6.3.post1), version solving failed.
+
+Endpoint for use LLama was Stopped.
+
+### 2.
+
+$ poetry add request
+
+Could not find a matching version of package request
+
+Endpoint for use LLama was Stopped.
+
+## Solutions
+
+1. Create separated docker containers VLLM for deploy the model.git exitee
+2. use another library to conect as Ollama or Langchain.
+
+## License
 
 This project is licensed under the MIT License.
