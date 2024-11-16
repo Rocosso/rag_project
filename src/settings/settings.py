@@ -1,3 +1,5 @@
+import os
+
 from pydantic_settings import BaseSettings
 from typing import ClassVar
 from pydantic import ValidationError
@@ -12,9 +14,10 @@ load_dotenv('.env')
 
 
 class Settings(BaseSettings):
-    llama_generator_base_url: str = "" # URL del servidor vLLM
-    huggingface_hub_token: str = ""
-    faiss_database_path: str = "/rag_project/src/databases/DocumentDatabase.faiss"
+    llama_generator_base_url: str = os.environ.get('LLAMA_BASE_URL', '') # URL del servidor vLLM
+    huggingface_hub_token: str = os.environ.get('HUGGING_FACE_HUB_TOKEN', '')
+    faiss_database_path: str = os.environ.get('FAISS_DATABASE_PATH', 'faiss.index')
+    openai_api_key: str = os.environ.get('OPENAI_API_KEY', '')
 
     ConfigDict: ClassVar = {'env_file': '.env', 'env_file_encoding': 'utf-8'}
 

@@ -1,8 +1,12 @@
 import openai
 import logging
 
-from src.config import OPENAI_API_KEY
+from src.settings.settings import Settings
 from src.domain.generator_interface import GeneratorInterface
+
+
+settings = Settings()
+
 
 class Generator(GeneratorInterface):
     def __init__(self, logger=None):
@@ -10,7 +14,7 @@ class Generator(GeneratorInterface):
             self.logger = logging.getLogger(__name__)
         else:
             self.logger = logger
-        openai.api_key = OPENAI_API_KEY
+        openai.api_key = settings.openai_api_key
 
 
     def generate(self, context: str, question: str, conversation_history: str) -> str:
