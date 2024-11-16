@@ -14,6 +14,7 @@ load_dotenv('.env')
 class Settings(BaseSettings):
     llama_generator_base_url: str = "" # URL del servidor vLLM
     huggingface_hub_token: str = ""
+    faiss_database_path: str = "/rag_project/src/databases/DocumentDatabase.faiss"
 
     ConfigDict: ClassVar = {'env_file': '.env', 'env_file_encoding': 'utf-8'}
 
