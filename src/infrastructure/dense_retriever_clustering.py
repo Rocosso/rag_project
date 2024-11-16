@@ -43,7 +43,6 @@ class DenseRetrieverClustering:
             self.logger.info("Índice FAISS not found. Building a new FAISS Index.")
             self._build_and_save_index()
 
-
     def _build_and_save_index(self):
         """Construye el índice FAISS y lo guarda en disco."""
         # Configurar el índice FAISS con IndexHNSWFlat
